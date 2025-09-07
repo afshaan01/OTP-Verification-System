@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-start" style="min-height: calc(100vh - 100px); padding-top: 50px;margin-top:100px;">
+    <div class="card shadow-lg p-4" style="max-width: 550px; width: 100%; border-radius: 12px; min-height: 350px;">
+        <h2 class="text-center mb-4" style="color: #003087; font-weight: 600;">Email Submission Portal</h2>
+{% if error %}
+<div id="error-message" style="background-color: #f44336; color: white; padding: 10px; border-radius: 5px;">
+  {{ error }}
+</div>
+<script>
+  setTimeout(function() {
+    var msg = document.getElementById("error-message");
+    if (msg) {
+        msg.style.display = 'none';
+    }
+  }, 3000);  // 3 seconds
+</script>
+{% endif %}
+
+        <form method="POST" action="{% url 'send_random' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="email" class="form-label" style="color: #003087; font-weight: 500;">Enter Registered Email ID</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" required>
+            </div>
+            <button type="submit" class="btn w-100" style="background-color: #003087; color: white; border-radius: 8px; padding: 14px; font-weight: 500;">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<!-- Custom CSS for additional styling -->
+<style>
+body {
+    background-color: #e9ecef;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Emblem_of_India.svg/1200px-Emblem_of_India.svg.png'), linear-gradient(to bottom, rgba(233, 236, 239, 0.9), rgba(233, 236, 239, 0.9));
+    background-size: 300px, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed;
+}
+
+.card {
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-control {
+    border: 1px solid #003087;
+    border-radius: 6px;
+    padding: 12px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #001f5b;
+    box-shadow: 0 0 6px rgba(0, 48, 135, 0.3);
+}
+
+.btn:hover {
+    background-color: #001f5b;
+    transition: background-color 0.3s ease;
+}
+
+.form-label {
+    font-size: 1.1rem;
+}
+</style>
+
+<!-- Bootstrap JS (Optional, for any interactive components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'base.html' %}
+
+{% block content %}
+
+
+<form method="POST" action="{% url 'send_random' %}">
+{% csrf_token %}
+<label> Enter Registered Email id</label>
+<input type="email" name="email">
+<button type="submit">Submit</button>
+
+</form>
+
+{% endblock %} {% endcomment %}
